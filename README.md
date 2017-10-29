@@ -5,13 +5,13 @@
 
 ## Usage
 
-1. Specify an L-system by its production rules
+Specify an L-system by its production rules
 
 ```python
 >>> algae = Lsys({'A': 'AB'})
 ```
 
-1. Alphabet consisting of both variables and constants is inferred from the rules.
+Alphabet consisting of both variables and constants is inferred from the rules.
 
 ```python
 >>> algae.variables() == {'A'}
@@ -22,34 +22,36 @@ True
 True
 ```
 
-1. Apply the (for now) single rule
+Apply the (for now) single rule
 
 ```python
 >>> algae('A')
 'AB'
 ```
 
-1. Add another production rule
+Add another production rule
 
 ```python
-algae['B'] = 'A'
-algae.variables == {'A', 'B'}
+>>> algae['B'] = 'A'
+>>> algae.variables == {'A', 'B'}
 True
 ```
 
-1. Apply the production rules to some string
+Apply the production rules to some string
 
 ```python
 >>> algae('AB')
 'ABA'
 ```
 
-1. Or iterate over the applications of rules
+Or iterate over the applications of rules
 
 ```python
 for i, state in enumerate(algae.iter('A')):
     print(i, state)
 ```
+
+yielding
 
 ```sh
 0 A
