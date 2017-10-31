@@ -6,12 +6,11 @@ class Turtle(ABC):
     def __init__(self):
         self.position = np.array([0., 0.])
         self.direction = np.array([0., 1.])
-        self.stepsize = 1.0
         self.trace = []
 
-    def move(self):
+    def move(self, step=1.0):
         # we could normalize direction
-        self.position += self.stepsize * self.direction
+        self.position += step * self.direction
 
     def poop(self):
         self.trace.append(tuple(self.position))
@@ -32,8 +31,11 @@ class FractalTree(Turtle):
         self.stack = []
 
     def feed(self, symbol):
-        if symbol in '01':
+        if symbol == '0':
+            # draw leaf
+            self.move()
             self.poop()
+        if symbol == '1':
             self.move()
             self.poop()
         elif symbol == '[':
@@ -53,5 +55,5 @@ if __name__ == '__main__':
     turtle(symbols)
     trace = np.asarray(turtle.trace)
     plt.figure(1)
-    plt.plot(trace[:, 0], trace[:, 1])
-    plt.show()
+    plt.scatter(trace[:, 0], trace[:, 1])
+    plt.savefig('tree.png')

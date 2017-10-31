@@ -33,7 +33,7 @@ Add another production rule
 
 ```python
 >>> algae['B'] = 'A'
->>> algae.variables == {'A', 'B'}
+>>> algae.variables() == {'A', 'B'}
 True
 ```
 
@@ -64,3 +64,7 @@ yielding
 7 ABAABABAABAABABAABABAABAABABAABAAB
 ...
 ```
+
+## Turtle graphics
+
+![Fractal Tree](linsys/tree.png)
