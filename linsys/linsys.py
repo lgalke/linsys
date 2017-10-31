@@ -127,6 +127,14 @@ class Lsys(dict):
             output += self[symbol]
         return output
 
+    def apply(self, input, n=1):
+        """
+        Apply :code:`self` to :code:`input` :code:`n` times.
+        """
+        for __ in range(n):
+            input = self(input)
+        return input
+
     def count_variables(self, input):
         """
         Counts the occurrences of any variables.
@@ -165,7 +173,7 @@ class Lsys(dict):
 
         Arguments
         =========
-        state: initial state
+        input: initial state
         >>> algae = Lsys({'A': 'AB', 'B': 'A'})
         >>> gen = algae.iter('A')
         >>> next(gen)
@@ -190,6 +198,7 @@ class Lsys(dict):
         while self.contains_variable(input):
             input = self(input)
             yield input
+
 
 
 if __name__ == '__main__':
