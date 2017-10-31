@@ -2,7 +2,6 @@
 
 [Lindenmayer systems](https://en.wikipedia.org/wiki/L-system) in python.
 
-
 ## Usage
 
 Specify an L-system by its production rules
@@ -65,6 +64,8 @@ yielding
 ...
 ```
 
-## Turtle graphics
+## Visualize
+
+A turtle eats the generated string and its trace can be used to visualize it. See [example](linsys/vision.py).
 
 ![Fractal Tree](linsys/tree.png)
