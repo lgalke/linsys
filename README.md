@@ -68,4 +68,23 @@ yielding
 
 A turtle eats the generated string and its trace can be used to visualize it. See [example](linsys/vision.py).
 
-![Fractal Tree](linsys/tree.png)
+### Fractal tree
+
+![Fractal Tree](linsys/tree5.png)
+
+![Fractal Tree](linsys/tree6.png)
+
+![Fractal Tree](linsys/tree7.png)
+
+
+### Koch Curves
+
+![1][out/koch1.png]
+
+![2][out/koch2.png]
+
+![3][out/koch3.png]
+
+![4][out/koch4.png]
+
+![5][out/koch5.png]

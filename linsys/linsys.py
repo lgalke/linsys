@@ -9,8 +9,6 @@ True
 'ABA'
 >>> gen = algae.iter('A')
 >>> next(gen)
-'A'
->>> next(gen)
 'AB'
 >>> next(gen)
 'ABA'
@@ -167,7 +165,7 @@ class Lsys(dict):
         else:
             return False
 
-    def iter(self, input):
+    def iter(self, input, max_iter=None):
         """
         Iterate through applications of production rules with axiom omega
 
@@ -177,8 +175,6 @@ class Lsys(dict):
         >>> algae = Lsys({'A': 'AB', 'B': 'A'})
         >>> gen = algae.iter('A')
         >>> next(gen)
-        'A'
-        >>> next(gen)
         'AB'
         >>> next(gen)
         'ABA'
@@ -186,19 +182,14 @@ class Lsys(dict):
         >>> algae['B'] = 'X'
         >>> next(gen)
         'XXX'
-        >>> next(gen)
-        Traceback (most recent call last):
-          File "/usr/lib64/python3.6/doctest.py", line 1330, in __run
-            compileflags, 1), test.globs)
-          File "<doctest __main__.Lsys.iter[7]>", line 1, in <module>
-            next(gen)
-        StopIteration
         """
-        yield input
-        while self.contains_variable(input):
+        if max_iter is None:
             input = self(input)
             yield input
-
+        else:
+            for __ in range(max_iter):
+                input = self(input)
+                yield input
 
 
 if __name__ == '__main__':
