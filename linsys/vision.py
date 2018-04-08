@@ -63,17 +63,14 @@ class FractalTree(Turtle):
             self.turn(45)
 
 
-def example_FractalTree():
-    n_iter = int(sys.argv[1]) if len(sys.argv) > 1 else 7
-    print("N iter =", n_iter)
+def example_FractalTree(n_epochs=5):
     fractal = Lsys({'1': '11', '0': '1[0]0'})
-    turtle = FractalTree()
-    symbols = fractal.apply('0', n_iter)
-    print(len(symbols))
-    trace = turtle(symbols).numpy()
-    plt.figure(0)
-    plt.scatter(trace[:, 0], trace[:, 1])
-    plt.savefig('tree.png')
+    for i, symbols in enumerate(fractal.iter('0', n_epochs)):
+        turtle = FractalTree()  # init again and again?
+        trace = turtle(symbols).numpy()
+        plt.figure(i+1)
+        plt.scatter(trace[:, 0], trace[:, 1])
+        plt.savefig('tree%d.png' % (i + 1))
 
 
 class KochCurve(Turtle):
@@ -103,5 +100,5 @@ def example_KochCurve(n_epochs=5):
 
 
 if __name__ == '__main__':
-    # example_FractalTree()
-    example_KochCurve()
+    example_FractalTree(7)
+    # example_KochCurve(6)
